@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaka Hanif - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="container nav">
+            <a href="#" class="nav-logo">Zaka Hanif</a>
+            <div class="nav-links" id="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button id="theme-toggle" class="theme-toggle-button">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+            <button id="mobile-menu-button" class="mobile-menu-button">
+                 <svg class="w-6 h-6" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container hero-content">
+                <img src="profile.jpeg" alt="Zaka Hanif" class="profile-image">
+                <h1 class="hero-title">Hi, I'm Zaka Hanif</h1>
+                <p class="hero-subtitle">Backend & Software Developer. I specialize in turning innovative ideas into secure, scalable, and reliable server-side solutions.</p>
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Hello, I'm Zaka Hanif, a backend and software developer student with a passion for building robust and scalable applications.</p>
+                        <p>My focus is on writing clean, efficient code and designing strong server-side logic.</p>
+                        <p>I thrive on solving complex problems and am currently seeking opportunities to apply my skills in a real-world environment.</p>
+                    </div>
+                    <div class="skills-card">
+                        <h3>Skills</h3>
+                        <div class="skills-tags">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Laravel</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Git & GitHub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image-container">
+                            <img src="dc.jpeg" alt="Project 1" class="project-image">
+                            <div class="project-overlay">
+                                <a href="#" class="btn">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>TMID Disord Bot</h3>
+                            <p>A Discord Bot for the TMID comunity, built with FastAPI and Discord.js</p>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                         <div class="project-image-container">
+                            <img src="port.png" alt="Project 3" class="project-image">
+                            <div class="project-overlay">
+                                <a href="index.html" class="btn">View Project</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Portfolio Website</h3>
+                            <p>A personal portfolio website made with HTML and plain CSS.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container contact-content">
+                <h2 class="section-title">Get In Touch</h2>
+                <p>I'm currently open to new opportunities. If you have a project in mind or just want to say hi, feel free to reach out!</p>
+                <a href="mailto:zaka2301@gmail.com" class="btn btn-primary">Email Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Zaka Hanif. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            htmlElement.setAttribute('data-theme', currentTheme);
+        } else {
+            htmlElement.setAttribute('data-theme', 'light');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            let theme = htmlElement.getAttribute('data-theme');
+            if (theme === 'light') {
+                htmlElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+
+</body>
+</html>
+
